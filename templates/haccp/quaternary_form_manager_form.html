@@ -1,0 +1,37 @@
+{% extends 'haccp/base.html' %} 
+
+{% block title %}Quaternary Form - Manager{% endblock %} 
+
+{% block content %}
+
+<div class="starter-template">
+	
+	<form action="{{action}}" method="POST">{% csrf_token %}
+      <!--  <ul>
+            <label>{{form.hand_pallet_sanitizer_strength}}</label>
+            <li>Manager Name: {{form.manager_name}}</li>h
+            <li>Manager Initial: {{form.manager_initial}}</li>
+        </ul>
+
+        --><h1>Approval for Quaternary Form</h1>
+        <ul>
+
+            {{ form.date.as_hidden }}
+            {{ form.techincian_name.as_hidden}}
+           {{ form.technician_initial.as_hidden}}
+            <li>Manager Name: {{form.manager_name}}</li>
+            <li>Manager Initial: {{form.manager_initial}}</li>
+           {{form.hand_pallet_sanitizer_strength.as_hidden}}
+            {{form.footbath1_sanitizer_strength.as_hidden}}
+            {{form.footbath2_sanitizer_strength.as_hidden}}
+            {{form.footbath3_sanitizer_strength.as_hidden}}
+            {{form.footbath4_sanitizer_strength.as_hidden}}
+             {{form.footbath5_sanitizer_strength.as_hidden}}
+              {{form.assembly_sanitizer_strength.as_hidden}}
+           </ul>
+        <input type="submit" value="Input Name to Approve" />
+
+	</form>
+
+
+{% endblock %}

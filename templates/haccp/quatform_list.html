@@ -1,0 +1,25 @@
+{% extends 'haccp/base.html' %} 
+
+{% block title %}Quaternary Form{% endblock %} 
+
+{% block content %}
+<div class="starter-template">
+<h1>Quaternary Form</h1>
+<ul>
+{% for quat in object_list %}
+    <li>Date Performed: {{ quat.date }}</li>
+    <li>Technician Name: {{ quat.techincian_name}}</li>
+    <li>Hand Pallet Sanitizer Strength:   {{quat.hand_pallet_sanitizer_strength}}</li>
+    <li>Foor Bath 1 Sanitizer Strength:  {{quat.footbath1_sanitizer_strength}}</li>
+    <li>Foor Bath 2 Sanitizer Strength:  {{quat.footbath2_sanitizer_strength}}</i>
+    <li>Foor Bath 3 Sanitizer Strength:  {{quat.footbath3_sanitizer_strength}}</l>
+    <li>Foor Bath 4 Sanitizer Strength:  {{quat.footbath4_sanitizer_strength}}</li>
+    <li>Foor Bath 5 Sanitizer Strength:  {{quat.footbath5_sanitizer_strength}}</li>
+    <li>Assembly Line Sanitizer Strength:  {{quat.assembly_sanitizer_strength}}</li>
+    <a href="{% url "QuatFormManView" pk=quat.id %}">Edit</a>
+{% empty %}
+    <li>There is no form submited for today yet!</li>
+{% endfor %}
+</ul>
+
+    {% endblock %}
