@@ -1,0 +1,12 @@
+{% extends 'haccp/base.html' %}{% load static %}
+{% block title %}Technician Dashboard{% endblock %}
+{% block content %}
+        <h1>Welcome {{user}}!</h1>
+        <h2>The time is
+				<script type="text/javascript">
+					var dNow=new Date();
+					var localdate= (dNow.getMonth()+1) + '/' + dNow.getDate() + '/' + dNow.getFullYear() + ' ' + dNow.getHours() + ':' + dNow.getMinutes();
+					document.write( localdate + ' <br> ');
+				</script>
+			</h2>
+{% endblock %}

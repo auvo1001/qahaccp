@@ -1,5 +1,5 @@
 from django import forms
-from haccp.models import QuatForm, Technician, Manager
+from haccp.models import QuatForm, User
 from django.core.urlresolvers import reverse
 
 class QuatFormTech(forms.ModelForm):

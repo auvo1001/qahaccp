@@ -14,7 +14,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, "templates"),
+)
 PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
@@ -108,9 +112,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'django.contrib.admin',
-     'django.contrib.admindocs',
-     'haccp',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'haccp',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

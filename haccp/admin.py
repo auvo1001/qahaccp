@@ -1,6 +1,5 @@
 from django.contrib import admin
-from haccp.models import Technician, Manager, QuatForm
+from haccp.models import User, QuatForm
 
-admin.site.register(Technician)
-admin.site.register(Manager)
+admin.site.register(User)
 admin.site.register(QuatForm)

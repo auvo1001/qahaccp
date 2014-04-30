@@ -1,0 +1,10 @@
+{% extends 'haccp/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{%block content %}
+    {% if user.is_authenticated %}
+        {% include 'haccp/TechnicianDashBoard.html' %}
+        {% if is_manager %}
+            {% include 'haccp/ManagerDashBoard.html' %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
