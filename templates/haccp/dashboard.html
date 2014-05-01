@@ -3,7 +3,9 @@
 {%block content %}
     {% if user.is_authenticated %}
         {% include 'haccp/TechnicianDashBoard.html' %}
-        {% if is_manager %}
+
+
+        {% if not is_manager %}
             {% include 'haccp/ManagerDashBoard.html' %}
         {% endif %}
     {% endif %}

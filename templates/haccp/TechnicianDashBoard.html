@@ -1,7 +1,8 @@
 {% extends 'haccp/base.html' %}{% load static %}
 {% block title %}Technician Dashboard{% endblock %}
 {% block content %}
-        <h1>Welcome {{user}}!</h1>
+<div class="starter-template">
+        <h1>Welcome {{user.get_full_name}}!</h1>
         <h2>The time is
 				<script type="text/javascript">
 					var dNow=new Date();
@@ -9,4 +10,15 @@
 					document.write( localdate + ' <br> ');
 				</script>
 			</h2>
+ </div>
+
+<div class="jumbotrona"><h1>Perform Technician Tasks</h1>
+     <div class="row">
+            <div class="ol-xs-6 col-sm-3"><p><a type="button" class="btn btn-primary" href="/haccp/quaternary_form.html">Perform Quaternary Check</a></p></div>
+            <div class="ol-xs-6 col-sm-3"><p><a type="button" class="btn btn-primary">Perform Cooler Check</a></p></div>
+            <div class="clearfix visible-xs"></div>
+            <div class="ol-xs-6 col-sm-3"><p><a type="button" class="btn btn-primary">Perform Preoperation Check</a></p></div>
+            <div class="ol-xs-6 col-sm-3"><p><a type="button" class="btn btn-primary">Perform Operation Check</a></p></div>
+     </div>
+ </div>
 {% endblock %}

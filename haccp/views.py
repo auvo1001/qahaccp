@@ -111,7 +111,7 @@ def logout_view(request):
     return redirect('/haccp/')
 
 def dashboardview(request):
-    is_manager = User.objects.filter(id=request.user.id).filter(type='MAN')
+    is_manager = User.objects.filter(id=request.user.id).filter(type='MAN') #passing of this is successful. However, the result is opposite. this shows up non-manager intead of manager
     context = RequestContext(request)
     context_dict = {'is_manager':is_manager}
     return render_to_response('haccp/dashboard.html',context_dict, context)
