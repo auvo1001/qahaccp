@@ -4,13 +4,22 @@
 
 {% block content %}
 
-<div class="starter-template">
+<div class="jumbotrona">
 
-	<form action="" method="POST">{% csrf_token %}
-    {% for field in form%}
-    {{ field.label }}   {{field}} <br />
-    {%endfor%}
-    <input type="submit" value="commit" />
+	<form action="/haccp/quaternary_form/" method="POST" class="form-group" >{% csrf_token %}
+
+
+          {{ form.technician_name}}
+          {{ form.technician_initial}}
+          {{form.manager_name.as_hidden}}
+          {{form.manager_initial.as_hidden}}
+          {{form.hand_pallet_sanitizer_strength.label}}:   {{form.hand_pallet_sanitizer_strength}}<br />
+          {{form.footbath1_sanitizer_strength.label}}:     {{form.footbath1_sanitizer_strength}}<br />
+         {{form.footbath3_sanitizer_strength.label}}:     {{form.footbath3_sanitizer_strength}}<br />
+         {{form.footbath4_sanitizer_strength.label}}:     {{form.footbath4_sanitizer_strength}}<br />
+        {{form.footbath5_sanitizer_strength.label}}:      {{form.footbath5_sanitizer_strength}}<br />
+         {{form.assembly_sanitizer_strength.label}}:       {{form.assembly_sanitizer_strength}}<br />
+    <input type="submit" name="submit" />
 	</form>
 
 

@@ -5,11 +5,12 @@ from haccp.forms import QuatFormTech, QuatFormMan
 from haccp.models import QuatForm, User
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView, FormView
 from django.forms.models import model_to_dict
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.core.urlresolvers import reverse_lazy
 
 import datetime
 
@@ -18,6 +19,9 @@ def index(request):
     context = RequestContext(request)
     context_dict = {}
     return render_to_response('haccp/index.html',context_dict, context)
+    if user.is_authenticated():
+        return HttpResponseRedirect("/haccp/dashboard.html")
+
 
 class QuatFormTodayView(ListView):
     queryset = QuatForm.objects.filter(date=datetime.datetime.now().date())
@@ -28,7 +32,6 @@ class QuatFormTodayView(ListView):
         return context
 
 def QuatFormTechView(request):
-
     context =RequestContext(request)
     if request.method =='POST':
         form = QuatFormTech(request.POST)
@@ -39,7 +42,26 @@ def QuatFormTechView(request):
     else:
         form = QuatFormTech
         result = render_to_response('haccp/quaternary_form.html',{'form':form}, context)
-    return result
+    return render_to_response('haccp/quaternary_form.html',{'form':form}, context)
+
+# class QuatFormTechView(FormView):
+#     form_class = QuatFormTech
+#     template_name='haccp/quaternary_form.html'
+#     success_url="haccp/dashboard.html"
+#
+#     def form_valid(self, form):
+#           quatform= form.save(commit=True)
+#           return super(QuatFormTechView, self).form_valid(form)
+#
+#     def get_success_url(self):
+#         return reverse('QuatFormTechView')
+
+    #def form_valid(self,form):
+        #form.instance.technician_name=self.request.user.get_fullname()
+        #form.instance.technician_initial=self.request.user.get_fullname()
+        #quatform = form.save()
+        #return super(QuatFormTechView,self).form_valid(form)
+
 
 
 class QuatFormManView(UpdateView):

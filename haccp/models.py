@@ -34,4 +34,7 @@ class QuatForm(models.Model):
     assembly_sanitizer_strength  = models.CharField(max_length=10,verbose_name="Assembly Conveyor Sanitizer Strength")
 
     def __unicode__(self):
-        return self.date
+        return unicode(self.date)
+
+    def get_absolute_url(self):
+        return reverse('quatform-detail', kwargs={'pk': self.pk})

@@ -3,12 +3,12 @@ from haccp.models import QuatForm, User
 from django.core.urlresolvers import reverse
 
 class QuatFormTech(forms.ModelForm):
-  
+
     class Meta:
         model = QuatForm
         exclude=['manager_name','manager_initial','is_reviewed_date','is_reviewed']
         #=======================================================================
-        # fields =['techincian_name','technician_initial',
+        # fields =['technician_name','technician_initial',
         #          'hand_pallet_sanitizer_strength',
         #          'footbath1_sanitizer_strength',
         #          'footbath2_sanitizer_strength',

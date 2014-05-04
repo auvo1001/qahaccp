@@ -1,6 +1,15 @@
 {% extends 'haccp/base.html' %}
         {%block content %}
+ {% if user.is_authenticated %}
+        {% include 'haccp/TechnicianDashBoard.html' %}
 
-                {% include 'haccp/login.html' %}
+
+        {% if not is_manager %}
+            {% include 'haccp/ManagerDashBoard.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'haccp/login.html' %}
+    {% endif %}
+
 
         {% endblock %}
