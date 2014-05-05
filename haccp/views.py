@@ -11,6 +11,9 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.urlresolvers import reverse_lazy
+from django.contrib import messages
+
+
 
 import datetime
 
@@ -50,14 +53,15 @@ class QuatFormTechView(FormView):
     success_url='haccp/dashboard.html'
 
 
-    def get_success_url(self):
-        return reverse('QuatFormTechView')
+    def get_success_message(self, cleaned_data):
+        return success_message
 
     def form_valid(self,form):
         quatform = form.save(commit=False)
         form.instance.technician_name=self.request.user.get_full_name()
         form.instance.technician_initial=self.request.user.get_full_name()
         quatform = form.save(commit=True)
+
         return super(QuatFormTechView,self).form_valid(form)
 
 
