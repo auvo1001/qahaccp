@@ -8,13 +8,14 @@
 
 	<form action="/haccp/quaternary_form/" method="POST" class="form-group" >{% csrf_token %}
 
-
-          {{ form.technician_name}}
-          {{ form.technician_initial}}
+          {{ form.date.as_hidden}}
+          {{ form.technician_name.as_hidden}}
+          {{ form.technician_initial.as_hidden}}
           {{form.manager_name.as_hidden}}
           {{form.manager_initial.as_hidden}}
           {{form.hand_pallet_sanitizer_strength.label}}:   {{form.hand_pallet_sanitizer_strength}}<br />
           {{form.footbath1_sanitizer_strength.label}}:     {{form.footbath1_sanitizer_strength}}<br />
+        {{form.footbath2_sanitizer_strength.label}}:     {{form.footbath2_sanitizer_strength}}<br />
          {{form.footbath3_sanitizer_strength.label}}:     {{form.footbath3_sanitizer_strength}}<br />
          {{form.footbath4_sanitizer_strength.label}}:     {{form.footbath4_sanitizer_strength}}<br />
         {{form.footbath5_sanitizer_strength.label}}:      {{form.footbath5_sanitizer_strength}}<br />

@@ -31,36 +31,34 @@ class QuatFormTodayView(ListView):
         context['now'] = datetime.datetime.now().date()
         return context
 
-def QuatFormTechView(request):
-    context =RequestContext(request)
-    if request.method =='POST':
-        form = QuatFormTech(request.POST)
-        if form.is_valid():
-            form.save(commit=True)
-        else:
-            print form.errors
-    else:
-        form = QuatFormTech
-        result = render_to_response('haccp/quaternary_form.html',{'form':form}, context)
-    return render_to_response('haccp/quaternary_form.html',{'form':form}, context)
-
-# class QuatFormTechView(FormView):
-#     form_class = QuatFormTech
-#     template_name='haccp/quaternary_form.html'
-#     success_url="haccp/dashboard.html"
+# def QuatFormTechView(request):
+#     context = RequestContext(request)
+#     if request.method =='POST':
+#         form = QuatFormTech(request.POST)
+#         if form.is_valid():
+#             form.save(commit=True)
+#         else:
+#             print form.errors
+#     else:
+#         form = QuatFormTech()
 #
-#     def form_valid(self, form):
-#           quatform= form.save(commit=True)
-#           return super(QuatFormTechView, self).form_valid(form)
-#
-#     def get_success_url(self):
-#         return reverse('QuatFormTechView')
+#     return  render_to_response('haccp/quaternary_form.html',{'form':form}, context)
 
-    #def form_valid(self,form):
-        #form.instance.technician_name=self.request.user.get_fullname()
-        #form.instance.technician_initial=self.request.user.get_fullname()
-        #quatform = form.save()
-        #return super(QuatFormTechView,self).form_valid(form)
+class QuatFormTechView(FormView):
+    form_class = QuatFormTech
+    template_name='haccp/quaternary_form.html'
+    success_url='haccp/dashboard.html'
+
+
+    def get_success_url(self):
+        return reverse('QuatFormTechView')
+
+    def form_valid(self,form):
+        quatform = form.save(commit=False)
+        form.instance.technician_name=self.request.user.get_full_name()
+        form.instance.technician_initial=self.request.user.get_full_name()
+        quatform = form.save(commit=True)
+        return super(QuatFormTechView,self).form_valid(form)
 
 
 

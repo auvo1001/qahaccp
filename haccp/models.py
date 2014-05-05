@@ -19,8 +19,8 @@ class User(models.Model):
 
 class QuatForm(models.Model):
     date =models.DateField(auto_now_add=True)
-    technician_name = models.CharField(max_length = 255, verbose_name='Technician Name')
-    technician_initial = models.CharField(max_length = 5) #initial is done in the check field of the actual form
+    technician_name = models.CharField(max_length = 255, verbose_name='Technician Name', blank=True)
+    technician_initial = models.CharField(max_length = 5, blank=True) #initial is done in the check field of the actual form
     manager_name = models.CharField(max_length =255,blank=True) #manager when checking
     manager_initial = models.CharField(max_length = 5,blank=True) #same as technician initial - perform as digital signature
     is_reviewed_date =models.DateField(auto_now=True, blank=True) #set to null because this would be updated the next day
@@ -36,5 +36,3 @@ class QuatForm(models.Model):
     def __unicode__(self):
         return unicode(self.date)
 
-    def get_absolute_url(self):
-        return reverse('quatform-detail', kwargs={'pk': self.pk})
